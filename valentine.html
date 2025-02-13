@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Darling Troy</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #ff9a9e;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        #text {
+            font-size: 2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #ff9a9e;
+            width: 0;
+            animation: typing 3s steps(15, end) forwards, blink 0.7s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 260px }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        #poem {
+            font-size: 1.2rem;
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+            animation-delay: 4s;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: #ff9a9e;
+            font-size: 20px;
+            animation: floatUp 4s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="text">My darling Troy</h1>
+
+    <p id="poem">
+        In the city of legends, where echoes still call, <br>
+        Love stood unshaken, beyond any wall. <br>
+        Not even a thousand ships, nor the embers of war, <br>
+        Could burn what the heart had cherished before. <br><br>
+
+        My love, like the walls of that fabled place, <br>
+        Stands tall and eternal, time cannot erase. <br>
+        No wooden horse, no cunning art, <br>
+        Could breach the fortress of my heart. <br><br>
+
+        So here I stand, with words as my sword, <br>
+        Not to conquer, but to adore. <br>
+        My darling Troy, forever you'll be, <br>
+        A kingdom of love inside of me. <br>
+    </p>
+
+    <script>
+        // Floating hearts generator
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+
+            const size = Math.random() * 20 + 10 + "px";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = size;
+
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
